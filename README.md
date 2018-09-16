@@ -1,5 +1,10 @@
 # Handlebars 实现我的笔记本
 
+> 学习地址：https://www.imooc.com/learn/859
+
+![](http://oph264zoo.bkt.clouddn.com/18-9-16/17262872.jpg)
+
+
 demo1 数据写死在 HTML 中
 - 缺点：数据写死，不够灵活
 
