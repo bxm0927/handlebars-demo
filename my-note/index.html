@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+    <!-- banner -->
+    <div class="banner">
+        <div class="banner-content">
+            <h1>我的笔记本</h1>
+            <h2>你的指尖，有改变世界的力量</h2>
+        </div>
+    </div>
+
+    <!-- 课程 -->
+    <div class="classes">
+    </div>
+
+    <!-- 分页 -->
+    <div class="page">
+    </div>
+
+    <!-- 全屏遮罩层 -->
+    <div class="screen-mask"></div>
+
+    <!-- 笔记详情 -->
+    <div class="note-detail">
+        <div class="note-detail-conten">
+            <!-- 课程大纲 -->
+            <div class="catalog">
+            </div>
+            <!-- 中间装饰 -->
+            <div class="note-middle"></div>
+            <!-- 课程内容 -->
+            <div class="note-content">
+            </div>
+        </div>
+    </div>
+
+    <!-- CDN -->
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/handlebars.js/4.0.11/handlebars.min.js"></script>
+
+    <!-- 定义 Handlebars 模版，课程 -->
+    <script type="text/x-handlebars-template" id="cardHbsTmp">
+        <ul class="classes-content">
+            {{#each this}}
+            <li data-id={{id}}>
+                <div class="innerbox">
+                    <img src="{{image}}" alt="{{title}}">
+                    <div class="titlebox">
+                        <span class="title">{{title}}</span>
+                        {{#equal hasnote 1}}<span class="note">(有笔记)</span>{{/equal}}
+                    </div>
+                    <div class="subtitle">{{subtitle}}</div>
+                    <div class="timespan {{#style timespan}} long {{else}} short {{/style}}">时间：{{timespan}}</div>
+                </div>
+            </li>
+            {{/each}}
+        </ul>
+    </script>
+
+    <!-- 定义 Handlebars 模版，分页 -->
+    <script type="text/x-handlebars-template" id="pageHbsTmp">
+        <ul>
+            {{#each this}}
+            <li {{#if cur}} class="cur" {{/if}}
+                {{#if clickable}} class="clickable" {{/if}}
+                data-pagecode={{index}}>
+                {{{text}}}
+            </li>
+            {{/each}}
+        </ul>
+    </script>
+
+    <!-- 定义 Handlebars 模版，课程大纲 -->
+    <script type="text/x-handlebars-template" id="catalogHbsTmp">
+        <ul class="title-ul">
+            {{#each this}}
+            <li class="title-li">
+                <h2>{{addOne @index}}、{{title}}</h2>
+
+                <ul class="subtitle-ul">
+                    {{#each subTitle}}
+                    <li class="subtitle-li">
+                        <h3>
+                            {{addOne @../index}}-{{addOne @index}}、
+                            <a href="http://www.imooc.com/{{titletype}}/{{mid}}" target="_blank">{{title}} </a>
+                            {{#if timespan}}<span class="time">({{timespan}})</span>{{/if}}
+                            {{#equal titletype "code"}}<span class="type">(编程)</span>{{/equal}}
+                            {{#equal titletype "ceping"}}<span class="type">(练习)</span>{{/equal}}
+                        </h3>
+                    </li>
+                    {{/each}}
+                </ul>
+            </li>
+            {{/each}}
+        </ul>
+    </script>
+
+    <!-- 定义 Handlebars 模版，课程内容 -->
+    <script type="text/x-handlebars-template" id="noteContentHbsTmp">
+        <div class="btn"><button>记笔记</button></div>
+
+        <ul class="note-content-ul">
+            {{#each this}}
+            <li class="note-content-li">
+                <div class="time">{{formatDate notetime}}</div>
+                <div class="content">{{{content}}}</div>
+            </li>
+            {{/each}}
+        </ul>
+    </script>
+
+    <script type="text/javascript" src="./js/handlebarsHelper.js"></script>
+    <script type="text/javascript" src="./js/formatPage.js"></script>
+    <script type="text/javascript" src="./js/index.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .card {
+            float: left;
+            margin: 20px;
+            padding: 20px;
+            background-color: deepskyblue;
+        }
+    </style>
+</head>
+<body>
+    <div id="card">
+    </div>
+
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/handlebars.js/4.0.11/handlebars.min.js"></script>
+
+    <!-- 定义 Handlebars 模版 -->
+    <script type="text/x-handlebars-template" id="cardHbsTmp">
+        {{#each this}}
+            <div class="card">
+                <div>姓名：{{name}}</div>
+                <div>生日：{{birthday}}</div>
+                <div>籍贯：{{place}}</div>
+                <div>职业：{{job}}</div>
+
+                {{#if books}}
+                    <div>书籍：</div>
+                {{/if}}
+                <ul>
+                    {{#each books}}
+                        {{!-- this 是当前遍历对象的引用 --}}
+                        <li>{{this}}</li>
+                    {{/each}}
+                </ul>
+
+                {{!-- <ul>
+                    {{#with books}}
+                    {{#each this}}
+                        <li>{{this}}</li>
+                    {{/each}}
+                    {{/with}}
+                </ul> --}}
+            </div>
+        {{/each}}
+    </script>
+
+    <script type="text/javascript">
+        var data = [{
+            name: "凯文卡特里克",
+            birthday: "1963年8月6日",
+            place: "美国洛杉矶",
+            job: "网络安全工程师",
+            books: [
+                "《傲慢与偏见》",
+                "《十万个为什么》",
+                "《线上幽灵》"
+            ]
+        }, {
+            name: "温特库温瑟",
+            birthday: "1950年8月6日",
+            place: "美国洛杉矶",
+            job: "Java 开发工程师"
+        }];
+
+        var cardHbsTmp = document.querySelector("#cardHbsTmp").innerHTML; // 获取模版
+        var template = Handlebars.compile(cardHbsTmp); // 编译模版
+        var html = template(data); // 渲染模版
+
+        // 涂页面
+        document.querySelector("#card").innerHTML = html;
+    </script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .card {
+            float: left;
+            margin: 20px;
+            padding: 20px;
+            background-color: deepskyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="card">
+    </div>
+
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/handlebars.js/4.0.11/handlebars.min.js"></script>
+
+    <!-- 定义 Handlebars 模版 -->
+    <script type="text/x-handlebars-template" id="cardHbsTmp">
+        {{#each this}}
+            <div class="card">
+                <h2>{{chinese @index}}</h2>
+                <div>姓名：{{name}}</div>
+                <div>生日：{{birthday}}</div>
+                <div>籍贯：{{place}}</div>
+                <div>职业：{{job}}</div>
+
+                {{#if books}}
+                    <div>书籍：</div>
+                {{/if}}
+                <ul>
+                    {{#each books}}
+                        <li {{#isFirst @index}} style="color:red;" {{/isFirst}}
+                            {{#isBlue ../books}} style="background-color: #ccc;" {{/isBlue}}>
+                            {{addOne @../index}}-{{addOne @index}} {{this}}
+                        </li>
+                    {{/each}}
+                </ul>
+            </div>
+        {{/each}}
+    </script>
+
+    <script type="text/javascript">
+        var data = [{
+            name: "凯文卡特里克",
+            birthday: "1963年8月6日",
+            place: "美国洛杉矶",
+            job: "网络安全工程师",
+            books: [
+                "《傲慢与偏见》",
+                "《十万个为什么》",
+                "《线上幽灵》"
+            ]
+        }, {
+            name: "温特库温瑟",
+            birthday: "1950年8月6日",
+            place: "美国洛杉矶",
+            job: "Java 开发工程师"
+        }];
+
+        // 需求
+        // 1. 卡片上增加中文序号
+        // 2. 需求前面增加数字序号，格式为“卡片序号-书籍序号”
+        // 3. 第一本书籍用红色形式
+        // 4. 如果一个人有超过两本书，那么除了第一本书之外，其余显示为白色
+
+        // 英文序号转中文序号
+        Handlebars.registerHelper('chinese', function (value) {
+            var arr = ['一', '二', '三'];
+            return arr[value];
+        });
+
+        // 英文序号加一
+        Handlebars.registerHelper('addOne', function (value) {
+            return value + 1;
+        });
+
+        // 判断序号是否等于 1
+        Handlebars.registerHelper('isFirst', function (value, options) {
+            if(value == 0) {
+                console.log(options);
+                console.log(options.fn(this)); // style="color:red;"
+                return options.fn(this); // 如果满足条件，就返回块级标签中的内容
+            }
+        });
+
+        // 判断数组长度是否大于 2
+        Handlebars.registerHelper('isBlue', function (value, options) {
+            if(value && value.length > 2) {
+                return options.fn(this);
+            }
+        });
+
+        var cardHbsTmp = document.querySelector("#cardHbsTmp").innerHTML; // 获取模版
+        var template = Handlebars.compile(cardHbsTmp); // 编译模版
+        var html = template(data); // 渲染模版
+
+        // 涂页面
+        document.querySelector("#card").innerHTML = html;
+    </script>
+</body>
+
+</html>

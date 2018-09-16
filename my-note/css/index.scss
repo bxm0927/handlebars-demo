@@ -1,0 +1,218 @@
+@import "./_mixins";
+
+// base
+* {
+    margin: 0;
+    padding: 0;
+}
+li {
+    list-style-type: none;
+}
+img {
+    width: 100%;
+    height: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+// banner
+.banner {
+    width: 100%;
+    padding: 20px;
+    background-color: #F1EFF1;
+    .banner-content {
+        @include w1200();
+    }
+    h1 {
+        font-size: 60px;
+        color: #000;
+        margin-top: 40px;
+        margin-left: 20px;
+    }
+    h2 {
+        font-size: 20px;
+        color: #6a6a6a;
+        margin-top: 40px;
+        margin-left: 20px;
+    }
+}
+
+// 课程
+.classes {
+    width: 100%;
+    .classes-content {
+        @include clearfix();
+        @include w1200;
+        margin: 20px auto;
+    }
+    li {
+        float: left;
+        width: 33.33333%;
+        &:hover {
+            cursor: pointer;
+            box-shadow: #666 10px 10px 20px;
+        }
+        .innerbox {
+            width: 90%;
+            margin: 20px auto;
+        }
+    }
+    .titlebox {
+        font-size: 20px;
+        margin-top: 10px;
+        .title {
+            display: inline-block;
+            max-width: 70%;
+            @include ellipsis();
+            // text-overflow: ellipsis;
+            // overflow: hidden;
+            // white-space: nowrap;
+        }
+        .note {
+            font-size: 14px;
+            vertical-align: text-top;
+        }
+    }
+    .subtitle,
+    .timespan {
+        font-size: 14px;
+        margin-top: 10px;
+        @include ellipsis();
+        // text-overflow: ellipsis;
+        // overflow: hidden;
+        // white-space: nowrap;
+    }
+    .short {
+        color: #d64bd3;
+    }
+    .long {
+        color: #d6984d;
+    }
+}
+
+// 分页
+.page {
+    text-align: center;
+    margin: 30px auto;
+    li {
+        display: inline-block;
+        background-color: #f2f2f2;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        // 当前页
+        &.cur {
+            background-color: #fffdb2;
+        }
+        // 可点击页
+        &.clickable {
+            background-color: #d6f2ff;
+            &:hover {
+                cursor: pointer;
+                background-color: #b9cbf7;
+            }
+        }
+    }
+}
+
+// 全屏遮罩层
+.screen-mask {
+    @include screen-mask();
+    background-color: #000;
+    opacity: .5;
+    display: none;
+}
+
+// 笔记详情
+.note-detail {
+    width: 100%;
+    display: none;
+    .note-detail-conten {
+        @include w1200();
+        @include screen-mask(10%);
+        width: 1000px;
+        background-color: #fff;
+        box-shadow: 0px 0px 200px #f7ff00;
+    }
+    .catalog {
+        float: left;
+        width: 48%;
+        height: 100%;
+        background-color: #e8e8ff;
+        overflow: auto;
+        .title-ul {
+            margin: 20px auto;
+            width: 80%;
+            .title-li {
+                h2 {
+                    font-size: 20px;
+                }
+            }
+        }
+        .subtitle-ul {
+            .subtitle-li {
+                h3 {
+                    font-size: 16px;
+                    text-indent: 40px;
+                    line-height: 30px;
+                    font-weight: normal;
+                }
+            }
+        }
+    }
+    .note-middle {
+        float: left;
+        width: 4%;
+        height: 100%;
+        background: url("../img/middle.jpg") repeat-y;
+        background-size: 100% 5%;
+    }
+    .note-content {
+        float: left;
+        width: 48%;
+        height: 100%;
+        background-color: #ffe3e5;
+        overflow: auto;
+        .note-content-ul {
+            margin: 20px auto;
+            width: 80%;
+            .note-content-li {
+                .time {
+                    margin-top: 20px;
+                    color: gray;
+                    font-size: 14px;
+                }
+                .content {
+                    margin-top: 5px;
+                    padding: 10px;
+                    background-color: #fff0f2;
+                    box-shadow: 2px 2px 2px #ffc9ce;
+                    p {
+                        margin-top: 10px;
+                        line-height: 30px;
+                    }
+                }
+            }
+        }
+        .btn {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+            button {
+                width: 120px;
+                height: 50px;
+                line-height: 50px;
+                font-size: 20px;
+                background-color: #86ff00;
+                border-radius: 20px;
+                border: none;
+                cursor: pointer;
+                outline: none;
+                transition: all .2s linear;
+            }
+        }
+    }
+}

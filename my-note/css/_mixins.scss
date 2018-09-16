@@ -1,0 +1,32 @@
+// 浮动和清除浮动
+@mixin fl() { float: left; *display: inline; _display: inline; }
+@mixin fr() { float: right; *display: inline; _display: inline; }
+@mixin clearfix() {
+    *zoom: 1;
+    &::after { content: ''; display: block; clear: both; visibility: hidden; height: 0; }
+}
+
+// 禁止换行, 文本溢出省略号显示 (一行)
+// 需要是块级(block、inline-block)元素，还需要给一个最大宽度(max-wdth)
+@mixin ellipsis() {
+    white-space: nowrap;
+    word-wrap: break-word;
+    word-break: break-all;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+// 最大宽度，居中显示
+@mixin w1200() {
+    display: block;
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+// 遮罩层：全屏遮罩、区域遮罩
+// 可以添加背景阴影效果：background-color: #000; opacity: .5;
+@mixin screen-mask($ratio: 0) { position: fixed; top: $ratio; left: $ratio; right: $ratio; bottom: $ratio; }
+@mixin area-mask() { position: absolute; top: 0; left: 0; right: 0; bottom: 0; }

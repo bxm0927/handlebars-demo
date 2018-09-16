@@ -1,0 +1,79 @@
+* { margin: 0; padding: 0; }
+
+li { list-style-type: none; }
+
+img { width: 100%; height: 100%; }
+
+a { text-decoration: none; }
+
+.banner { width: 100%; padding: 20px; background-color: #F1EFF1; }
+
+.banner .banner-content { display: block; width: 1200px; margin-left: auto; margin-right: auto; }
+
+.banner h1 { font-size: 60px; color: #000; margin-top: 40px; margin-left: 20px; }
+
+.banner h2 { font-size: 20px; color: #6a6a6a; margin-top: 40px; margin-left: 20px; }
+
+.classes { width: 100%; }
+
+.classes .classes-content { *zoom: 1; display: block; width: 1200px; margin-left: auto; margin-right: auto; margin: 20px auto; }
+
+.classes .classes-content::after { content: ''; display: block; clear: both; visibility: hidden; height: 0; }
+
+.classes li { float: left; width: 33.33333%; }
+
+.classes li:hover { cursor: pointer; box-shadow: #666 10px 10px 20px; }
+
+.classes li .innerbox { width: 90%; margin: 20px auto; }
+
+.classes .titlebox { font-size: 20px; margin-top: 10px; }
+
+.classes .titlebox .title { display: inline-block; max-width: 70%; white-space: nowrap; word-wrap: break-word; word-break: break-all; -ms-text-overflow: ellipsis; -o-text-overflow: ellipsis; text-overflow: ellipsis; overflow: hidden; }
+
+.classes .titlebox .note { font-size: 14px; vertical-align: text-top; }
+
+.classes .subtitle, .classes .timespan { font-size: 14px; margin-top: 10px; white-space: nowrap; word-wrap: break-word; word-break: break-all; -ms-text-overflow: ellipsis; -o-text-overflow: ellipsis; text-overflow: ellipsis; overflow: hidden; }
+
+.classes .short { color: #d64bd3; }
+
+.classes .long { color: #d6984d; }
+
+.page { text-align: center; margin: 30px auto; }
+
+.page li { display: inline-block; background-color: #f2f2f2; border-radius: 50%; width: 40px; height: 40px; line-height: 40px; }
+
+.page li.cur { background-color: #fffdb2; }
+
+.page li.clickable { background-color: #d6f2ff; }
+
+.page li.clickable:hover { cursor: pointer; background-color: #b9cbf7; }
+
+.screen-mask { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: #000; opacity: .5; display: none; }
+
+.note-detail { width: 100%; display: none; }
+
+.note-detail .note-detail-conten { display: block; width: 1200px; margin-left: auto; margin-right: auto; position: fixed; top: 10%; left: 10%; right: 10%; bottom: 10%; width: 1000px; background-color: #fff; box-shadow: 0px 0px 200px #f7ff00; }
+
+.note-detail .catalog { float: left; width: 48%; height: 100%; background-color: #e8e8ff; overflow: auto; }
+
+.note-detail .catalog .title-ul { margin: 20px auto; width: 80%; }
+
+.note-detail .catalog .title-ul .title-li h2 { font-size: 20px; }
+
+.note-detail .catalog .subtitle-ul .subtitle-li h3 { font-size: 16px; text-indent: 40px; line-height: 30px; font-weight: normal; }
+
+.note-detail .note-middle { float: left; width: 4%; height: 100%; background: url("../img/middle.jpg") repeat-y; background-size: 100% 5%; }
+
+.note-detail .note-content { float: left; width: 48%; height: 100%; background-color: #ffe3e5; overflow: auto; }
+
+.note-detail .note-content .note-content-ul { margin: 20px auto; width: 80%; }
+
+.note-detail .note-content .note-content-ul .note-content-li .time { margin-top: 20px; color: gray; font-size: 14px; }
+
+.note-detail .note-content .note-content-ul .note-content-li .content { margin-top: 5px; padding: 10px; background-color: #fff0f2; box-shadow: 2px 2px 2px #ffc9ce; }
+
+.note-detail .note-content .note-content-ul .note-content-li .content p { margin-top: 10px; line-height: 30px; }
+
+.note-detail .note-content .btn { margin-top: 20px; margin-bottom: 20px; text-align: center; }
+
+.note-detail .note-content .btn button { width: 120px; height: 50px; line-height: 50px; font-size: 20px; background-color: #86ff00; border-radius: 20px; border: none; cursor: pointer; outline: none; transition: all .2s linear; }
