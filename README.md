@@ -4,7 +4,6 @@
 
 ![](http://oph264zoo.bkt.clouddn.com/18-9-16/17262872.jpg)
 
-
 demo1 数据写死在 HTML 中
 - 缺点：数据写死，不够灵活
 
